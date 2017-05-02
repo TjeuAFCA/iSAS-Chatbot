@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "index";
+}
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="~/js/script.js"></script>
+
+<h1>Api.ai</h1>
+@*<form action="/question" method="post">
+        <div>
+            <h2>Ik help u graag, stel uw vraag:</h2>
+            <input type="text" name="question"><br>
+            <input type="submit" value="Vraag" />
+        </div>
+    </form>*@
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <h2>Ik help u graag, stel uw vraag:</h2>
+        <input type="text" name="question"><br>
+        <input type="submit" value="Vraag" />
+    </fieldset>
+}
+
+<div id="questions">
+
+</div>
