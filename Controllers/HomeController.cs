@@ -16,6 +16,9 @@ namespace chatbot_iSAS.Controllers
         private ApiAi apiAi;
         private string sessionId;
 
+        private string AccessToken = "3f2523e2ea314c8cab00136d2820aedc";
+        private string AccessOld = "28e8693eaed34021b9f83e6f1c17be7f"; // Oude van Luuk
+
         protected void Session_Start(object sender, EventArgs e)
         {
             HttpContext.Session.SetString("sessionId", null);
@@ -28,7 +31,7 @@ namespace chatbot_iSAS.Controllers
 
         public string Response()
         {
-            var config = new AIConfiguration("28e8693eaed34021b9f83e6f1c17be7f", SupportedLanguage.Dutch);
+            var config = new AIConfiguration(AccessToken, SupportedLanguage.Dutch);
             apiAi = new ApiAi(config);
 
             var response = apiAi.TextRequest("Ik ben opzoek naar het jaarrooster.");
@@ -39,7 +42,7 @@ namespace chatbot_iSAS.Controllers
         [HttpPost]
         public ActionResult Question(string question)
         {
-            var config = new AIConfiguration("28e8693eaed34021b9f83e6f1c17be7f", SupportedLanguage.Dutch);
+            var config = new AIConfiguration(AccessToken, SupportedLanguage.Dutch);
             if (HttpContext.Session.GetString("sessionId") != null)
             {
                 config.SessionId = HttpContext.Session.GetString("sessionId");
