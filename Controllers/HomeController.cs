@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Web;
@@ -15,6 +18,7 @@ namespace chatbot_iSAS.Controllers
     {
         private ApiAi apiAi;
         private string sessionId;
+        private static readonly HttpClient client = new HttpClient();
 
         protected void Session_Start(object sender, EventArgs e)
         {
@@ -36,6 +40,17 @@ namespace chatbot_iSAS.Controllers
             return response.Result.Fulfillment.Speech;
         }
 
+        private async void PostUserId(string sessionId, string userId)
+        {
+            var json = "{\n\"sessionId\":\"" + sessionId + "\",\n\"entities\":[\n{\n\"name\":\"User\",\n\"entries\":[\n{\n\"value\":\"" + userId + "\"}\n]\n}\n]\n}";
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "fd56e430546a4302b4085f0754b57843");
+            var response = await client.PostAsync(new Uri("https://api.api.ai/v1/userEntities?v=20150910&sessionId=" + sessionId),
+                new StringContent(json, UnicodeEncoding.UTF8, "application/json"));
+
+            Console.WriteLine(response);
+        }
+
         [HttpPost]
         public ActionResult Question(string question)
         {
@@ -46,7 +61,11 @@ namespace chatbot_iSAS.Controllers
             }
             apiAi = new ApiAi(config);
 
+
+
             var response = apiAi.TextRequest(question);
+
+            PostUserId(response.SessionId, "user01");
 
             if (HttpContext.Session.GetString("sessionId") == null && response.SessionId != null)
             {
