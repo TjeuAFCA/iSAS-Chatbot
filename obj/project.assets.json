@@ -7326,10 +7326,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\luuk\\documents\\visual studio 2017\\Projects\\chatbot-iSAS\\chatbot-iSAS\\chatbot-iSAS.csproj",
+      "projectUniqueName": "C:\\Users\\Luuk\\Source\\Repos\\iSAS_chatbot\\chatbot-iSAS.csproj",
       "projectName": "chatbot-iSAS",
-      "projectPath": "c:\\users\\luuk\\documents\\visual studio 2017\\Projects\\chatbot-iSAS\\chatbot-iSAS\\chatbot-iSAS.csproj",
-      "outputPath": "c:\\users\\luuk\\documents\\visual studio 2017\\Projects\\chatbot-iSAS\\chatbot-iSAS\\obj\\",
+      "projectPath": "C:\\Users\\Luuk\\Source\\Repos\\iSAS_chatbot\\chatbot-iSAS.csproj",
+      "outputPath": "C:\\Users\\Luuk\\Source\\Repos\\iSAS_chatbot\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "net452"

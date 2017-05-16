@@ -28,7 +28,7 @@ namespace chatbot_iSAS.Controllers
 
         public string Response()
         {
-            var config = new AIConfiguration("28e8693eaed34021b9f83e6f1c17be7f", SupportedLanguage.Dutch);
+            var config = new AIConfiguration("c3e6138548984161bd501920dc0ea0d5", SupportedLanguage.Dutch);
             apiAi = new ApiAi(config);
 
             var response = apiAi.TextRequest("Ik ben opzoek naar het jaarrooster.");
@@ -39,7 +39,8 @@ namespace chatbot_iSAS.Controllers
         [HttpPost]
         public ActionResult Question(string question)
         {
-            var config = new AIConfiguration("28e8693eaed34021b9f83e6f1c17be7f", SupportedLanguage.Dutch);
+            Console.WriteLine(question);
+            var config = new AIConfiguration("c3e6138548984161bd501920dc0ea0d5", SupportedLanguage.Dutch);
             if (HttpContext.Session.GetString("sessionId") != null)
             {
                 config.SessionId = HttpContext.Session.GetString("sessionId");
@@ -53,7 +54,8 @@ namespace chatbot_iSAS.Controllers
                 HttpContext.Session.SetString("sessionId", response.SessionId);
             }
 
-            return Content("<p>Jij: " + question + " <br>iSAS: " + response.Result.Fulfillment.Speech + "</p> <hr>", "text/html");
+            return Content(response.Result.Fulfillment.Speech);
+            //return Content("<p>Jij: " + question + " <br>iSAS: " + response.Result.Fulfillment.Speech + "</p> <hr>", "text/html");
         }
 
         public IActionResult About()
