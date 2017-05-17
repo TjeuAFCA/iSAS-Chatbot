@@ -4,6 +4,11 @@
     <TargetFramework>net452</TargetFramework>
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\css\chat.css" />
+    <Content Include="wwwroot\js\chat.js" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ApiAiSDK" Version="1.6.5" />
     <PackageReference Include="jQuery" Version="3.1.1" />
