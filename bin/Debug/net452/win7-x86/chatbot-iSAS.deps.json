@@ -107,6 +107,11 @@
           ".NETFramework/v4.5.2/System.Security.dll": {}
         }
       },
+      "system.web/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.5.2/System.Web.dll": {}
+        }
+      },
       "system.xml/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.5.2/System.Xml.dll": {}
@@ -3469,6 +3474,11 @@
       "sha512": ""
     },
     "system.security/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "system.web/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

@@ -1,0 +1,60 @@
+﻿@model chatbot_iSAS.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            @if (ViewBag.Error != null)
+            {
+                <div>@ViewBag.Error</div>
+            }
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control"/>
+                <span asp-validation-for="Username"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" class="form-control"/>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary btn-block"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+@using (Html.BeginForm()) {
+    <fieldset>
+        <legend>Login</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <p>
+            <input type="submit" value="Login" />
+        </p>
+    </fieldset>
+}
